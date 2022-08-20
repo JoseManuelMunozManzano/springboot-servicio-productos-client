@@ -32,6 +32,15 @@ public class ProductoController {
     public Producto detalle(@PathVariable Long id) {
         Producto producto = productoService.findById(id);
         producto.setPort(port);
+
+        // Simulando error para que lo maneje Hystrix en el proyecto de microservicio
+        // https://github.com/JoseManuelMunozManzano/springboot-servicio-item-client
+        // Commit: Hystrix. Cortocircuito y camino alternativo
+        boolean ok = false;
+        if (!ok) {
+            throw new RuntimeException("No se pudo cargar el producto!");
+        }
+
         return producto;
     }
 }
