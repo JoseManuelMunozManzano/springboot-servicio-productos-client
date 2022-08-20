@@ -32,6 +32,15 @@ public class ProductoController {
     public Producto detalle(@PathVariable Long id) {
         Producto producto = productoService.findById(id);
         producto.setPort(port);
+
+        // Implementamos un timeout para que el servicio items falle.
+        // El timeout por defecto en ribbon e hystrix es de 1 sg.
+        try {
+            Thread.sleep(2000L);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         return producto;
     }
 }
