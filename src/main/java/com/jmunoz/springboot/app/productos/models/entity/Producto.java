@@ -1,7 +1,6 @@
 package com.jmunoz.springboot.app.productos.models.entity;
 
 import javax.persistence.*;
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,7 +8,6 @@ import java.util.Date;
 @Table(name = "productos")
 public class Producto implements Serializable {
 
-    @Serial
     private static final long serialVersionUID = 1602917016537581597L;
 
     @Id
